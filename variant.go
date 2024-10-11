@@ -68,7 +68,12 @@ type Decimal struct{
  	d.Decimal = dc
 	return nil
  }
-
+ func (d *Decimal)MarshalJSON()([]byte, error){
+    if d == nil || d.Decimal == nil{
+	    return nil
+    }
+    return d.Decimal.MarshalJSON()
+ }
 // Variant represents a Shopify variant
 type Variant struct {
 	Id                   uint64                 `json:"id,omitempty"`
