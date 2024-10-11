@@ -49,6 +49,25 @@ const (
 	VariantInventoryPolicyContinue VariantInventoryPolicy = "continue"
 )
 
+type Decimal struct{
+ 	Decimal *decimal.Decimal
+ }
+ func (d *Decimal)UnmarshalJSON(p []byte)error{
+ 	// we wrap decimal.Decimal to handle cases where shopify 
+ 	// provides an empty string instead for empty price/decimals
+ 	if string(p) == `""`{
+ 		return nil
+ 	}
+ 	dc := &decimal.Decimal{}
+ 	if err := dc.UnmarshalJSON(p); err != nil{
+ 		return err
+ 	}
+ 	if dc.IsZero(){
+ 		return nil
+ 	}
+ 	d.Decimal = dc
+ }
+
 // Variant represents a Shopify variant
 type Variant struct {
 	Id                   uint64                 `json:"id,omitempty"`
@@ -58,8 +77,8 @@ type Variant struct {
 	Position             int                    `json:"position,omitempty"`
 	Grams                int                    `json:"grams,omitempty"`
 	InventoryPolicy      VariantInventoryPolicy `json:"inventory_policy,omitempty"`
-	Price                *decimal.Decimal       `json:"price,omitempty"`
-	CompareAtPrice       *decimal.Decimal       `json:"compare_at_price,omitempty"`
+	Price                *Decimal       	    `json:"price,omitempty"`
+	CompareAtPrice       *Decimal               `json:"compare_at_price,omitempty"`
 	FulfillmentService   string                 `json:"fulfillment_service,omitempty"`
 	InventoryManagement  string                 `json:"inventory_management,omitempty"`
 	InventoryItemId      uint64                 `json:"inventory_item_id,omitempty"`
@@ -73,7 +92,7 @@ type Variant struct {
 	Barcode              string                 `json:"barcode,omitempty"`
 	ImageId              uint64                 `json:"image_id,omitempty"`
 	InventoryQuantity    int                    `json:"inventory_quantity,omitempty"`
-	Weight               *decimal.Decimal       `json:"weight,omitempty"`
+	Weight               *Decimal               `json:"weight,omitempty"`
 	WeightUnit           string                 `json:"weight_unit,omitempty"`
 	OldInventoryQuantity int                    `json:"old_inventory_quantity,omitempty"`
 	RequireShipping      bool                   `json:"requires_shipping"`
