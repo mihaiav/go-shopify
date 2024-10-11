@@ -66,6 +66,7 @@ type Decimal struct{
  		return nil
  	}
  	d.Decimal = dc
+	return nil
  }
 
 // Variant represents a Shopify variant
