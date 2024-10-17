@@ -4,8 +4,6 @@ import (
 	"context"
 	"fmt"
 	"time"
-
-	"github.com/shopspring/decimal"
 )
 
 const (
@@ -51,7 +49,7 @@ type Customer struct {
 	MultipassIdentifier       string                 `json:"multipass_identifier,omitempty"`
 	OrdersCount               int                    `json:"orders_count,omitempty"`
 	TaxExempt                 bool                   `json:"tax_exempt,omitempty"`
-	TotalSpent                *decimal.Decimal       `json:"total_spent,omitempty"`
+	TotalSpent                *Decimal               `json:"total_spent,omitempty"`
 	Phone                     string                 `json:"phone,omitempty"`
 	Currency                  string                 `json:"currency,omitempty"`
 	AcceptsMarketing          bool                   `json:"accepts_marketing,omitempty"`

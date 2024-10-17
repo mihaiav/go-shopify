@@ -5,8 +5,6 @@ import (
 	"encoding/json"
 	"fmt"
 	"time"
-
-	"github.com/shopspring/decimal"
 )
 
 const (
@@ -258,12 +256,12 @@ type OrderListOptions struct {
 // OrderCancelOptions A struct of all available order cancel options.
 // See: https://help.shopify.com/api/reference/order#index
 type OrderCancelOptions struct {
-	Amount   *decimal.Decimal `json:"amount,omitempty"`
-	Currency string           `json:"currency,omitempty"`
-	Restock  bool             `json:"restock,omitempty"`
-	Reason   string           `json:"reason,omitempty"`
-	Email    bool             `json:"email,omitempty"`
-	Refund   *Refund          `json:"refund,omitempty"`
+	Amount   Decimal `json:"amount,omitempty"`
+	Currency string  `json:"currency,omitempty"`
+	Restock  bool    `json:"restock,omitempty"`
+	Reason   string  `json:"reason,omitempty"`
+	Email    bool    `json:"email,omitempty"`
+	Refund   *Refund `json:"refund,omitempty"`
 }
 
 // OrderInventoryBehaviour The behaviour to use when updating inventory.
@@ -304,21 +302,21 @@ type Order struct {
 	BillingAddress           *Address                `json:"billing_address,omitempty"`
 	ShippingAddress          *Address                `json:"shipping_address,omitempty"`
 	Currency                 string                  `json:"currency,omitempty"`
-	TotalPrice               *decimal.Decimal        `json:"total_price,omitempty"`
+	TotalPrice               Decimal                 `json:"total_price,omitempty"`
 	TotalPriceSet            *AmountSet              `json:"total_price_set,omitempty"`
 	TotalShippingPriceSet    *AmountSet              `json:"total_shipping_price_set,omitempty"`
-	CurrentTotalPrice        *decimal.Decimal        `json:"current_total_price,omitempty"`
-	SubtotalPrice            *decimal.Decimal        `json:"subtotal_price,omitempty"`
-	CurrentSubtotalPrice     *decimal.Decimal        `json:"current_subtotal_price,omitempty"`
-	TotalDiscounts           *decimal.Decimal        `json:"total_discounts,omitempty"`
+	CurrentTotalPrice        Decimal                 `json:"current_total_price,omitempty"`
+	SubtotalPrice            Decimal                 `json:"subtotal_price,omitempty"`
+	CurrentSubtotalPrice     Decimal                 `json:"current_subtotal_price,omitempty"`
+	TotalDiscounts           Decimal                 `json:"total_discounts,omitempty"`
 	TotalDiscountSet         *AmountSet              `json:"total_discount_set,omitempty"`
-	CurrentTotalDiscounts    *decimal.Decimal        `json:"current_total_discounts,omitempty"`
+	CurrentTotalDiscounts    Decimal                 `json:"current_total_discounts,omitempty"`
 	CurrentTotalDiscountsSet *AmountSet              `json:"current_total_discounts_set,omitempty"`
-	TotalLineItemsPrice      *decimal.Decimal        `json:"total_line_items_price,omitempty"`
+	TotalLineItemsPrice      Decimal                 `json:"total_line_items_price,omitempty"`
 	TaxesIncluded            bool                    `json:"taxes_included,omitempty"`
-	TotalTax                 *decimal.Decimal        `json:"total_tax,omitempty"`
+	TotalTax                 Decimal                 `json:"total_tax,omitempty"`
 	TotalTaxSet              *AmountSet              `json:"total_tax_set,omitempty"`
-	CurrentTotalTax          *decimal.Decimal        `json:"current_total_tax,omitempty"`
+	CurrentTotalTax          Decimal                 `json:"current_total_tax,omitempty"`
 	CurrentTotalTaxSet       *AmountSet              `json:"current_total_tax_set,omitempty"`
 	TaxLines                 []TaxLine               `json:"tax_lines,omitempty"`
 	TotalWeight              int                     `json:"total_weight,omitempty"`
@@ -392,9 +390,9 @@ type Address struct {
 }
 
 type DiscountCode struct {
-	Amount *decimal.Decimal `json:"amount,omitempty"`
-	Code   string           `json:"code,omitempty"`
-	Type   string           `json:"type,omitempty"`
+	Amount Decimal `json:"amount,omitempty"`
+	Code   string  `json:"code,omitempty"`
+	Type   string  `json:"type,omitempty"`
 }
 
 type DiscountApplication struct {
@@ -405,7 +403,7 @@ type DiscountApplication struct {
 	TargetType       DiscountTargetType       `json:"target_type"`
 	Title            string                   `json:"title"`
 	Type             DiscountType             `json:"type"`
-	Value            *decimal.Decimal         `json:"value"`
+	Value            Decimal                  `json:"value"`
 	ValueType        DiscountValueType        `json:"value_type"`
 }
 
@@ -415,8 +413,8 @@ type LineItem struct {
 	VariantId                  uint64                 `json:"variant_id,omitempty"`
 	Quantity                   int                    `json:"quantity,omitempty"`
 	CurrentQuantity            int                    `json:"current_quantity,omitempty"`
-	Price                      *decimal.Decimal       `json:"price,omitempty"`
-	TotalDiscount              *decimal.Decimal       `json:"total_discount,omitempty"`
+	Price                      Decimal                `json:"price,omitempty"`
+	TotalDiscount              Decimal                `json:"total_discount,omitempty"`
 	Title                      string                 `json:"title,omitempty"`
 	VariantTitle               string                 `json:"variant_title,omitempty"`
 	Name                       string                 `json:"name,omitempty"`
@@ -427,7 +425,7 @@ type LineItem struct {
 	FulfillmentService         string                 `json:"fulfillment_service,omitempty"`
 	RequiresShipping           bool                   `json:"requires_shipping,omitempty"`
 	VariantInventoryManagement string                 `json:"variant_inventory_management,omitempty"`
-	PreTaxPrice                *decimal.Decimal       `json:"pre_tax_price,omitempty"`
+	PreTaxPrice                Decimal                `json:"pre_tax_price,omitempty"`
 	Properties                 []NoteAttribute        `json:"properties,omitempty"`
 	ProductExists              bool                   `json:"product_exists,omitempty"`
 	FulfillableQuantity        int                    `json:"fulfillable_quantity,omitempty"`
@@ -446,9 +444,9 @@ type LineItem struct {
 }
 
 type DiscountAllocations struct {
-	Amount                   *decimal.Decimal `json:"amount,omitempty"`
-	DiscountApplicationIndex int              `json:"discount_application_index,omitempty"`
-	AmountSet                *AmountSet       `json:"amount_set,omitempty"`
+	Amount                   Decimal    `json:"amount,omitempty"`
+	DiscountApplicationIndex int        `json:"discount_application_index,omitempty"`
+	AmountSet                *AmountSet `json:"amount_set,omitempty"`
 }
 
 type AmountSet struct {
@@ -457,8 +455,8 @@ type AmountSet struct {
 }
 
 type AmountSetEntry struct {
-	Amount       *decimal.Decimal `json:"amount,omitempty"`
-	CurrencyCode string           `json:"currency_code,omitempty"`
+	Amount       Decimal `json:"amount,omitempty"`
+	CurrencyCode string  `json:"currency_code,omitempty"`
 }
 
 // UnmarshalJSON custom unmarsaller for LineItem required to mitigate some older orders having LineItem.Properies
@@ -528,19 +526,19 @@ type PaymentDetails struct {
 }
 
 type ShippingLines struct {
-	Id                            uint64           `json:"id,omitempty"`
-	Title                         string           `json:"title,omitempty"`
-	Price                         *decimal.Decimal `json:"price,omitempty"`
-	PriceSet                      *AmountSet       `json:"price_set,omitempty"`
-	DiscountedPrice               *decimal.Decimal `json:"discounted_price,omitempty"`
-	DiscountedPriceSet            *AmountSet       `json:"discounted_price_set,omitempty"`
-	Code                          string           `json:"code,omitempty"`
-	Source                        string           `json:"source,omitempty"`
-	Phone                         string           `json:"phone,omitempty"`
-	RequestedFulfillmentServiceId string           `json:"requested_fulfillment_service_id,omitempty"`
-	CarrierIdentifier             string           `json:"carrier_identifier,omitempty"`
-	TaxLines                      []TaxLine        `json:"tax_lines,omitempty"`
-	Handle                        string           `json:"handle,omitempty"`
+	Id                            uint64     `json:"id,omitempty"`
+	Title                         string     `json:"title,omitempty"`
+	Price                         Decimal    `json:"price,omitempty"`
+	PriceSet                      *AmountSet `json:"price_set,omitempty"`
+	DiscountedPrice               Decimal    `json:"discounted_price,omitempty"`
+	DiscountedPriceSet            *AmountSet `json:"discounted_price_set,omitempty"`
+	Code                          string     `json:"code,omitempty"`
+	Source                        string     `json:"source,omitempty"`
+	Phone                         string     `json:"phone,omitempty"`
+	RequestedFulfillmentServiceId string     `json:"requested_fulfillment_service_id,omitempty"`
+	CarrierIdentifier             string     `json:"carrier_identifier,omitempty"`
+	TaxLines                      []TaxLine  `json:"tax_lines,omitempty"`
+	Handle                        string     `json:"handle,omitempty"`
 }
 
 // UnmarshalJSON custom unmarshaller for ShippingLines implemented
@@ -569,31 +567,31 @@ func (sl *ShippingLines) UnmarshalJSON(data []byte) error {
 }
 
 type TaxLine struct {
-	Title string           `json:"title,omitempty"`
-	Price *decimal.Decimal `json:"price,omitempty"`
-	Rate  *decimal.Decimal `json:"rate,omitempty"`
+	Title string  `json:"title,omitempty"`
+	Price Decimal `json:"price,omitempty"`
+	Rate  Decimal `json:"rate,omitempty"`
 }
 
 type Transaction struct {
-	Id             uint64           `json:"id,omitempty"`
-	OrderId        uint64           `json:"order_id,omitempty"`
-	Amount         *decimal.Decimal `json:"amount,omitempty"`
-	Kind           string           `json:"kind,omitempty"`
-	Gateway        string           `json:"gateway,omitempty"`
-	Status         string           `json:"status,omitempty"`
-	Message        string           `json:"message,omitempty"`
-	CreatedAt      *time.Time       `json:"created_at,omitempty"`
-	Test           bool             `json:"test,omitempty"`
-	Authorization  string           `json:"authorization,omitempty"`
-	Currency       string           `json:"currency,omitempty"`
-	LocationId     *int64           `json:"location_id,omitempty"`
-	UserId         *int64           `json:"user_id,omitempty"`
-	ParentId       *int64           `json:"parent_id,omitempty"`
-	DeviceId       *int64           `json:"device_id,omitempty"`
-	ErrorCode      string           `json:"error_code,omitempty"`
-	SourceName     string           `json:"source_name,omitempty"`
-	Source         string           `json:"source,omitempty"`
-	PaymentDetails *PaymentDetails  `json:"payment_details,omitempty"`
+	Id             uint64          `json:"id,omitempty"`
+	OrderId        uint64          `json:"order_id,omitempty"`
+	Amount         Decimal         `json:"amount,omitempty"`
+	Kind           string          `json:"kind,omitempty"`
+	Gateway        string          `json:"gateway,omitempty"`
+	Status         string          `json:"status,omitempty"`
+	Message        string          `json:"message,omitempty"`
+	CreatedAt      *time.Time      `json:"created_at,omitempty"`
+	Test           bool            `json:"test,omitempty"`
+	Authorization  string          `json:"authorization,omitempty"`
+	Currency       string          `json:"currency,omitempty"`
+	LocationId     *int64          `json:"location_id,omitempty"`
+	UserId         *int64          `json:"user_id,omitempty"`
+	ParentId       *int64          `json:"parent_id,omitempty"`
+	DeviceId       *int64          `json:"device_id,omitempty"`
+	ErrorCode      string          `json:"error_code,omitempty"`
+	SourceName     string          `json:"source_name,omitempty"`
+	Source         string          `json:"source,omitempty"`
+	PaymentDetails *PaymentDetails `json:"payment_details,omitempty"`
 }
 
 type ClientDetails struct {
@@ -621,8 +619,8 @@ type OrderAdjustment struct {
 	Id           uint64              `json:"id,omitempty"`
 	OrderId      uint64              `json:"order_id,omitempty"`
 	RefundId     uint64              `json:"refund_id,omitempty"`
-	Amount       *decimal.Decimal    `json:"amount,omitempty"`
-	TaxAmount    *decimal.Decimal    `json:"tax_amount,omitempty"`
+	Amount       Decimal             `json:"amount,omitempty"`
+	TaxAmount    Decimal             `json:"tax_amount,omitempty"`
 	Kind         OrderAdjustmentType `json:"kind,omitempty"`
 	Reason       string              `json:"reason,omitempty"`
 	AmountSet    *AmountSet          `json:"amount_set,omitempty"`
@@ -637,14 +635,14 @@ const (
 )
 
 type RefundLineItem struct {
-	Id          uint64           `json:"id,omitempty"`
-	Quantity    int              `json:"quantity,omitempty"`
-	LineItemId  uint64           `json:"line_item_id,omitempty"`
-	LineItem    *LineItem        `json:"line_item,omitempty"`
-	Subtotal    *decimal.Decimal `json:"subtotal,omitempty"`
-	TotalTax    *decimal.Decimal `json:"total_tax,omitempty"`
-	SubTotalSet *AmountSet       `json:"subtotal_set,omitempty"`
-	TotalTaxSet *AmountSet       `json:"total_tax_set,omitempty"`
+	Id          uint64     `json:"id,omitempty"`
+	Quantity    int        `json:"quantity,omitempty"`
+	LineItemId  uint64     `json:"line_item_id,omitempty"`
+	LineItem    *LineItem  `json:"line_item,omitempty"`
+	Subtotal    Decimal    `json:"subtotal,omitempty"`
+	TotalTax    Decimal    `json:"total_tax,omitempty"`
+	SubTotalSet *AmountSet `json:"subtotal_set,omitempty"`
+	TotalTaxSet *AmountSet `json:"total_tax_set,omitempty"`
 }
 
 // List orders

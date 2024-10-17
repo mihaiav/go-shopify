@@ -5,8 +5,6 @@ import (
 	"encoding/json"
 	"fmt"
 	"time"
-
-	"github.com/shopspring/decimal"
 )
 
 const recurringApplicationChargesBasePath = "recurring_application_charges"
@@ -31,29 +29,29 @@ type RecurringApplicationChargeServiceOp struct {
 
 // RecurringApplicationCharge represents a Shopify RecurringApplicationCharge.
 type RecurringApplicationCharge struct {
-	APIClientId           uint64           `json:"api_client_id"`
-	ActivatedOn           *time.Time       `json:"activated_on"`
-	BalanceRemaining      *decimal.Decimal `json:"balance_remaining"`
-	BalanceUsed           *decimal.Decimal `json:"balance_used"`
-	BillingOn             *time.Time       `json:"billing_on"`
-	CancelledOn           *time.Time       `json:"cancelled_on"`
-	CappedAmount          *decimal.Decimal `json:"capped_amount"`
-	ConfirmationURL       string           `json:"confirmation_url"`
-	CreatedAt             *time.Time       `json:"created_at"`
-	DecoratedReturnURL    string           `json:"decorated_return_url"`
-	Id                    uint64           `json:"id"`
-	Name                  string           `json:"name"`
-	Price                 *decimal.Decimal `json:"price"`
-	ReturnURL             string           `json:"return_url"`
-	RiskLevel             *decimal.Decimal `json:"risk_level"`
-	Status                string           `json:"status"`
-	Terms                 string           `json:"terms"`
-	Test                  *bool            `json:"test"`
-	TrialDays             int              `json:"trial_days"`
-	TrialEndsOn           *time.Time       `json:"trial_ends_on"`
-	UpdateCappedAmountURL string           `json:"update_capped_amount_url"`
-	UpdatedAt             *time.Time       `json:"updated_at"`
-	Currency              string           `json:"currency"`
+	APIClientId           uint64     `json:"api_client_id"`
+	ActivatedOn           *time.Time `json:"activated_on"`
+	BalanceRemaining      *Decimal   `json:"balance_remaining"`
+	BalanceUsed           *Decimal   `json:"balance_used"`
+	BillingOn             *time.Time `json:"billing_on"`
+	CancelledOn           *time.Time `json:"cancelled_on"`
+	CappedAmount          *Decimal   `json:"capped_amount"`
+	ConfirmationURL       string     `json:"confirmation_url"`
+	CreatedAt             *time.Time `json:"created_at"`
+	DecoratedReturnURL    string     `json:"decorated_return_url"`
+	Id                    uint64     `json:"id"`
+	Name                  string     `json:"name"`
+	Price                 *Decimal   `json:"price"`
+	ReturnURL             string     `json:"return_url"`
+	RiskLevel             *Decimal   `json:"risk_level"`
+	Status                string     `json:"status"`
+	Terms                 string     `json:"terms"`
+	Test                  *bool      `json:"test"`
+	TrialDays             int        `json:"trial_days"`
+	TrialEndsOn           *time.Time `json:"trial_ends_on"`
+	UpdateCappedAmountURL string     `json:"update_capped_amount_url"`
+	UpdatedAt             *time.Time `json:"updated_at"`
+	Currency              string     `json:"currency"`
 }
 
 func parse(dest **time.Time, data *string) error {

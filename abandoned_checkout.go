@@ -4,8 +4,6 @@ import (
 	"context"
 	"fmt"
 	"time"
-
-	"github.com/shopspring/decimal"
 )
 
 const abandonedCheckoutsBasePath = "checkouts"
@@ -63,10 +61,10 @@ type AbandonedCheckout struct {
 	PresentmentCurrency      string               `json:"presentment_currency,omitempty"`
 	BuyerAcceptsSmsMarketing bool                 `json:"buyer_accepts_sms_marketing,omitempty"`
 	SmsMarketingPhone        string               `json:"sms_marketing_phone,omitempty"`
-	TotalDiscounts           *decimal.Decimal     `json:"total_discounts,omitempty"`
-	TotalLineItemsPrice      *decimal.Decimal     `json:"total_line_items_price,omitempty"`
-	TotalPrice               *decimal.Decimal     `json:"total_price,omitempty"`
-	SubtotalPrice            *decimal.Decimal     `json:"subtotal_price,omitempty"`
+	TotalDiscounts           *Decimal             `json:"total_discounts,omitempty"`
+	TotalLineItemsPrice      *Decimal             `json:"total_line_items_price,omitempty"`
+	TotalPrice               *Decimal             `json:"total_price,omitempty"`
+	SubtotalPrice            *Decimal             `json:"subtotal_price,omitempty"`
 	TotalDuties              string               `json:"total_duties,omitempty"`
 	BillingAddress           *Address             `json:"billing_address,omitempty"`
 	ShippingAddress          *Address             `json:"shipping_address,omitempty"`

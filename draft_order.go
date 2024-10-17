@@ -4,8 +4,6 @@ import (
 	"context"
 	"fmt"
 	"time"
-
-	"github.com/shopspring/decimal"
 )
 
 const (
@@ -59,7 +57,7 @@ type DraftOrder struct {
 	TotalTax        string           `json:"total_tax,omitempty"`
 	TaxExempt       *bool            `json:"tax_exempt,omitempty"`
 	TotalPrice      string           `json:"total_price,omitempty"`
-	SubtotalPrice   *decimal.Decimal `json:"subtotal_price,omitempty"`
+	SubtotalPrice   *Decimal         `json:"subtotal_price,omitempty"`
 	CompletedAt     *time.Time       `json:"completed_at,omitempty"`
 	CreatedAt       *time.Time       `json:"created_at,omitempty"`
 	UpdatedAt       *time.Time       `json:"updated_at,omitempty"`

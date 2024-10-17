@@ -4,8 +4,6 @@ import (
 	"context"
 	"fmt"
 	"time"
-
-	"github.com/shopspring/decimal"
 )
 
 const applicationChargesBasePath = "application_charges"
@@ -25,18 +23,18 @@ type ApplicationChargeServiceOp struct {
 }
 
 type ApplicationCharge struct {
-	Id                 uint64           `json:"id"`
-	Name               string           `json:"name"`
-	APIClientId        uint64           `json:"api_client_id"`
-	Price              *decimal.Decimal `json:"price"`
-	Status             string           `json:"status"`
-	ReturnURL          string           `json:"return_url"`
-	Test               *bool            `json:"test"`
-	CreatedAt          *time.Time       `json:"created_at"`
-	UpdatedAt          *time.Time       `json:"updated_at"`
-	ChargeType         *string          `json:"charge_type"`
-	DecoratedReturnURL string           `json:"decorated_return_url"`
-	ConfirmationURL    string           `json:"confirmation_url"`
+	Id                 uint64     `json:"id"`
+	Name               string     `json:"name"`
+	APIClientId        uint64     `json:"api_client_id"`
+	Price              *Decimal   `json:"price"`
+	Status             string     `json:"status"`
+	ReturnURL          string     `json:"return_url"`
+	Test               *bool      `json:"test"`
+	CreatedAt          *time.Time `json:"created_at"`
+	UpdatedAt          *time.Time `json:"updated_at"`
+	ChargeType         *string    `json:"charge_type"`
+	DecoratedReturnURL string     `json:"decorated_return_url"`
+	ConfirmationURL    string     `json:"confirmation_url"`
 }
 
 // ApplicationChargeResource represents the result from the

@@ -4,8 +4,6 @@ import (
 	"context"
 	"fmt"
 	"time"
-
-	"github.com/shopspring/decimal"
 )
 
 const carrierBasePath = "carrier_services"
@@ -120,7 +118,7 @@ type ShippingRate struct {
 
 	// The total price based on the shipping rate currency.
 	// In cents unit. See https://github.com/Shopify/shipping-fulfillment-app/issues/15#issuecomment-725996936
-	TotalPrice decimal.Decimal `json:"total_price"`
+	TotalPrice Decimal `json:"total_price"`
 
 	// Whether the customer must provide a phone number at checkout.
 	PhoneRequired bool `json:"phone_required,omitempty"`

@@ -31,7 +31,7 @@ type PriceRule struct {
 	Id                                     uint64                                  `json:"id,omitempty"`
 	Title                                  string                                  `json:"title,omitempty"`
 	ValueType                              string                                  `json:"value_type,omitempty"`
-	Value                                  *decimal.Decimal                        `json:"value,omitempty"`
+	Value                                  *Decimal                                `json:"value,omitempty"`
 	CustomerSelection                      string                                  `json:"customer_selection,omitempty"`
 	TargetType                             string                                  `json:"target_type,omitempty"`
 	TargetSelection                        string                                  `json:"target_selection,omitempty"`

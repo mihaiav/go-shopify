@@ -4,8 +4,6 @@ import (
 	"context"
 	"fmt"
 	"time"
-
-	"github.com/shopspring/decimal"
 )
 
 const giftCardsBasePath = "gift_cards"
@@ -29,23 +27,23 @@ type GiftCardServiceOp struct {
 
 // giftCard represents a Shopify discount rule
 type GiftCard struct {
-	Id             uint64           `json:"id,omitempty"`
-	ApiClientId    uint64           `json:"api_client_id,omitempty"`
-	Balance        *decimal.Decimal `json:"balance,omitempty"`
-	InitalValue    *decimal.Decimal `json:"initial_value,omitempty"`
-	Code           string           `json:"code,omitempty"`
-	Currency       string           `json:"currency,omitempty"`
-	CustomerId     *CustomerId      `json:"customer_id,omitempty"`
-	CreatedAt      *time.Time       `json:"created_at,omitempty"`
-	DisabledAt     *time.Time       `json:"disabled_at,omitempty"`
-	ExpiresOn      string           `json:"expires_on,omitempty"`
-	LastCharacters string           `json:"last_characters,omitempty"`
-	LineItemId     uint64           `json:"line_item_id,omitempty"`
-	Note           string           `json:"note,omitempty"`
-	OrderId        uint64           `json:"order_id,omitempty"`
-	TemplateSuffix string           `json:"template_suffix,omitempty"`
-	UserId         uint64           `json:"user_id,omitempty"`
-	UpdatedAt      *time.Time       `json:"updated_at,omitempty"`
+	Id             uint64      `json:"id,omitempty"`
+	ApiClientId    uint64      `json:"api_client_id,omitempty"`
+	Balance        *Decimal    `json:"balance,omitempty"`
+	InitalValue    *Decimal    `json:"initial_value,omitempty"`
+	Code           string      `json:"code,omitempty"`
+	Currency       string      `json:"currency,omitempty"`
+	CustomerId     *CustomerId `json:"customer_id,omitempty"`
+	CreatedAt      *time.Time  `json:"created_at,omitempty"`
+	DisabledAt     *time.Time  `json:"disabled_at,omitempty"`
+	ExpiresOn      string      `json:"expires_on,omitempty"`
+	LastCharacters string      `json:"last_characters,omitempty"`
+	LineItemId     uint64      `json:"line_item_id,omitempty"`
+	Note           string      `json:"note,omitempty"`
+	OrderId        uint64      `json:"order_id,omitempty"`
+	TemplateSuffix string      `json:"template_suffix,omitempty"`
+	UserId         uint64      `json:"user_id,omitempty"`
+	UpdatedAt      *time.Time  `json:"updated_at,omitempty"`
 }
 
 type CustomerId struct {

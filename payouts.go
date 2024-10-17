@@ -3,8 +3,6 @@ package goshopify
 import (
 	"context"
 	"fmt"
-
-	"github.com/shopspring/decimal"
 )
 
 const payoutsBasePath = "shopify_payments/payouts"
@@ -40,11 +38,11 @@ type PayoutsListOptions struct {
 
 // Payout represents a Shopify payout
 type Payout struct {
-	Id       uint64          `json:"id,omitempty"`
-	Date     OnlyDate        `json:"date,omitempty"`
-	Currency string          `json:"currency,omitempty"`
-	Amount   decimal.Decimal `json:"amount,omitempty"`
-	Status   PayoutStatus    `json:"status,omitempty"`
+	Id       uint64       `json:"id,omitempty"`
+	Date     OnlyDate     `json:"date,omitempty"`
+	Currency string       `json:"currency,omitempty"`
+	Amount   Decimal      `json:"amount,omitempty"`
+	Status   PayoutStatus `json:"status,omitempty"`
 }
 
 type PayoutStatus string

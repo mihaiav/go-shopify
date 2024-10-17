@@ -2,8 +2,6 @@ package goshopify
 
 import (
 	"context"
-
-	"github.com/shopspring/decimal"
 )
 
 // ShippingZoneService is an interface for interfacing with the shipping zones endpoint
@@ -37,7 +35,7 @@ type ShippingCountry struct {
 	Id             uint64             `json:"id,omitempty"`
 	ShippingZoneId uint64             `json:"shipping_zone_id,omitempty"`
 	Name           string             `json:"name,omitempty"`
-	Tax            *decimal.Decimal   `json:"tax,omitempty"`
+	Tax            *Decimal           `json:"tax,omitempty"`
 	Code           string             `json:"code,omitempty"`
 	TaxName        string             `json:"tax_name,omitempty"`
 	Provinces      []ShippingProvince `json:"provinces,omitempty"`
@@ -45,35 +43,35 @@ type ShippingCountry struct {
 
 // ShippingProvince represents a Shopify shipping province
 type ShippingProvince struct {
-	Id             uint64           `json:"id,omitempty"`
-	CountryId      uint64           `json:"country_id,omitempty"`
-	ShippingZoneId uint64           `json:"shipping_zone_id,omitempty"`
-	Name           string           `json:"name,omitempty"`
-	Code           string           `json:"code,omitempty"`
-	Tax            *decimal.Decimal `json:"tax,omitempty"`
-	TaxName        string           `json:"tax_name,omitempty"`
-	TaxType        string           `json:"tax_type,omitempty"`
-	TaxPercentage  *decimal.Decimal `json:"tax_percentage,omitempty"`
+	Id             uint64   `json:"id,omitempty"`
+	CountryId      uint64   `json:"country_id,omitempty"`
+	ShippingZoneId uint64   `json:"shipping_zone_id,omitempty"`
+	Name           string   `json:"name,omitempty"`
+	Code           string   `json:"code,omitempty"`
+	Tax            *Decimal `json:"tax,omitempty"`
+	TaxName        string   `json:"tax_name,omitempty"`
+	TaxType        string   `json:"tax_type,omitempty"`
+	TaxPercentage  *Decimal `json:"tax_percentage,omitempty"`
 }
 
 // WeightBasedShippingRate represents a Shopify weight-constrained shipping rate
 type WeightBasedShippingRate struct {
-	Id             uint64           `json:"id,omitempty"`
-	ShippingZoneId uint64           `json:"shipping_zone_id,omitempty"`
-	Name           string           `json:"name,omitempty"`
-	Price          *decimal.Decimal `json:"price,omitempty"`
-	WeightLow      *decimal.Decimal `json:"weight_low,omitempty"`
-	WeightHigh     *decimal.Decimal `json:"weight_high,omitempty"`
+	Id             uint64   `json:"id,omitempty"`
+	ShippingZoneId uint64   `json:"shipping_zone_id,omitempty"`
+	Name           string   `json:"name,omitempty"`
+	Price          *Decimal `json:"price,omitempty"`
+	WeightLow      *Decimal `json:"weight_low,omitempty"`
+	WeightHigh     *Decimal `json:"weight_high,omitempty"`
 }
 
 // PriceBasedShippingRate represents a Shopify subtotal-constrained shipping rate
 type PriceBasedShippingRate struct {
-	Id               uint64           `json:"id,omitempty"`
-	ShippingZoneId   uint64           `json:"shipping_zone_id,omitempty"`
-	Name             string           `json:"name,omitempty"`
-	Price            *decimal.Decimal `json:"price,omitempty"`
-	MinOrderSubtotal *decimal.Decimal `json:"min_order_subtotal,omitempty"`
-	MaxOrderSubtotal *decimal.Decimal `json:"max_order_subtotal,omitempty"`
+	Id               uint64   `json:"id,omitempty"`
+	ShippingZoneId   uint64   `json:"shipping_zone_id,omitempty"`
+	Name             string   `json:"name,omitempty"`
+	Price            *Decimal `json:"price,omitempty"`
+	MinOrderSubtotal *Decimal `json:"min_order_subtotal,omitempty"`
+	MaxOrderSubtotal *Decimal `json:"max_order_subtotal,omitempty"`
 }
 
 // CarrierShippingRateProvider represents a Shopify carrier-constrained shipping rate
@@ -81,8 +79,8 @@ type CarrierShippingRateProvider struct {
 	Id               uint64            `json:"id,omitempty"`
 	CarrierServiceId uint64            `json:"carrier_service_id,omitempty"`
 	ShippingZoneId   uint64            `json:"shipping_zone_id,omitempty"`
-	FlatModifier     *decimal.Decimal  `json:"flat_modifier,omitempty"`
-	PercentModifier  *decimal.Decimal  `json:"percent_modifier,omitempty"`
+	FlatModifier     *Decimal          `json:"flat_modifier,omitempty"`
+	PercentModifier  *Decimal          `json:"percent_modifier,omitempty"`
 	ServiceFilter    map[string]string `json:"service_filter,omitempty"`
 }
 
